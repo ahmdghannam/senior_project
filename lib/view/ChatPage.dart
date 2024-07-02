@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_chat_ui/flutter_chat_ui.dart' as ui;
 import 'package:flutter_chat_types/flutter_chat_types.dart';
 import 'package:flutter_course_project/model/Chat/ChatData.dart';
+import 'package:flutter_course_project/model/api/Api.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'HomePage.dart';
@@ -21,13 +22,6 @@ class _ChatPageState extends State<ChatPage> {
 
   User user =
       User(id: '1', firstName: 'John', lastName: 'Doe', role: Role.user);
-  final List<Widget> pages = [
-    HomePage(
-      studentId: "",
-    ),
-    ChatPage(),
-    ProfilePage()
-  ];
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: ChatAppBar(
@@ -42,16 +36,28 @@ class _ChatPageState extends State<ChatPage> {
               inputOptions: ui.InputOptions(
                 sendButtonVisibilityMode: ui.SendButtonVisibilityMode.editing,
               ),
-              onSendPressed: (partialText) {
+              onSendPressed: (partialText) async {
                 final message = TextMessage(
                   author: user,
                   createdAt: DateTime.now().millisecondsSinceEpoch,
                   id: DateTime.now().millisecondsSinceEpoch.toString(),
                   text: partialText.text,
                 );
-                setState(() {
-                  ChatData.dummyChat.insert(
-                     0,
+
+                print("Chat page The message is  " + partialText.text);
+
+                try {
+                  // Await the reply from the API
+                  setState(() {
+                    ChatData.dummyChat.insert(0, message);
+                  });
+                  final reply = await _sendPostRequest(partialText.text);
+
+                  print("Chat page  The reply is " + reply);
+
+                  setState(() {
+                    ChatData.dummyChat.insert(
+                      1,
                       TextMessage(
                         author: User(
                           id: '2',
@@ -60,13 +66,36 @@ class _ChatPageState extends State<ChatPage> {
                           role: Role.user,
                         ),
                         createdAt: DateTime.now().millisecondsSinceEpoch + 1,
-                        id: (DateTime.now().millisecondsSinceEpoch + 1)
-                            .toString(),
-                        text: 'Hello! How can I assist you today?',
-                      ));
-                  ChatData.dummyChat.insert(1, message);
-                });
+                        id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
+                        text: reply,
+                      ),
+                    );
+                    // Insert user message first
+                  });
+                } catch (e) {
+                  print('Error: $e');
+                  setState(() {
+                    ChatData.dummyChat.insert(0, message);
+                  });
+                  setState(() {
+                    ChatData.dummyChat.insert(
+                      1,
+                      TextMessage(
+                        author: User(
+                          id: '2',
+                          firstName: 'Chat',
+                          lastName: 'Bot',
+                          role: Role.user,
+                        ),
+                        createdAt: DateTime.now().millisecondsSinceEpoch + 1,
+                        id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
+                        text: 'Error: Failed to load chat data',
+                      ),
+                    );// Insert user message first
+                  });
+                }
               },
+
               emptyState: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -231,6 +260,18 @@ class _ChatPageState extends State<ChatPage> {
       },
     ),
       );
+  final List<Widget> pages = [
+    HomePage(
+      studentId: "",
+    ),
+    ChatPage(),
+    ProfilePage()
+  ];
+  Future<String> _sendPostRequest(String text) async {
+    // Await the result of the API call
+    final reply = await Api.getChatReply(text);
+    return reply;
+  }
 
   Future<void> _showErrorDialog(BuildContext context, String error) async {
     _isDialogShowing = true;
