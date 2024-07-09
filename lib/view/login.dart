@@ -17,7 +17,7 @@ class LoginPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Login Page',
+          'تسجيل الدخول',
           style: TextStyle(color: Color(0xFF92705B)),
         ),
       ),
@@ -32,12 +32,12 @@ class LoginPage extends StatelessWidget {
                   height: 300,
                 ),
                 RoundedTextField(
-                  label: 'Email',
+                  label: 'الايميل',
                   controller: emailController,
                 ),
                 const SizedBox(height: 25),
                 RoundedTextField(
-                  label: 'Password',
+                  label: 'الرمز',
                   isPassword: true,
                   controller: passwordController,
                 ),
@@ -51,16 +51,12 @@ class LoginPage extends StatelessWidget {
                     backgroundColor: const Color(0xFF842700),
                     foregroundColor: Colors.white,
                   ),
-                  child: const Text('Login'),
+                  child: const Text('التسجيل'),
                 ),
                 const SizedBox(height: 16),
                 Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Text(
-                      'Do not have an account? ',
-                      style: TextStyle(color: Color(0xFF92705B)),
-                    ),
                     GestureDetector(
                       onTap: () {
                         Navigator.push(
@@ -71,11 +67,15 @@ class LoginPage extends StatelessWidget {
                         );
                       },
                       child: const Text(
-                        'Register',
+                        'سجل الان',
                         style: TextStyle(
                             color: Color(0xFF92705B),
                             fontWeight: FontWeight.bold),
                       ),
+                    ),
+                    const Text(
+                      'هل لديك حساب ؟ ',
+                      style: TextStyle(color: Color(0xFF92705B)),
                     ),
                   ],
                 ),
@@ -116,7 +116,7 @@ class LoginPage extends StatelessWidget {
       // Handle login failure
       // You can show an error message to the user
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Login failed. Please check your email and password."),
+        content: Text("فشل التسجيل الرجاء التأكد من البيانات المدخلة والمحاولة مرة أخرى"),
         duration: Duration(seconds: 3),
       ));
     }

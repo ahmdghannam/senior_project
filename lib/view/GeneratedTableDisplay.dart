@@ -129,11 +129,11 @@ class _GeneratedTableDisplayState extends State<GeneratedTableDisplay> {
             },
           ),
           const Text(
-            "Suggested Schedule",
+            "الجدول المقترح",
             style: TextStyle(fontSize: 16),
           ),
           Text(
-            "total hours ${totalCoursesHours.toString()}",
+            " ${totalCoursesHours.toString() +"\t" }مجموع الساعات ",
             style: TextStyle(fontSize: 12, color: Color(0xFF842700)),
           ),
         ],
