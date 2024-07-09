@@ -15,7 +15,7 @@ class GeneratedTableDisplay extends StatefulWidget {
 
 class _GeneratedTableDisplayState extends State<GeneratedTableDisplay> {
   List<UICourse> courses = [];
-
+  int totalCoursesHours = 0;
   @override
   void initState() {
     super.initState();
@@ -29,6 +29,7 @@ class _GeneratedTableDisplayState extends State<GeneratedTableDisplay> {
       print(fetchedCourses.toString());
       setState(() {
         courses = fetchedCourses;
+        totalCoursesHours = calculateCoursesHours(fetchedCourses);
       });
     } catch (error) {
       print("Error loading courses: $error");
@@ -83,7 +84,6 @@ class _GeneratedTableDisplayState extends State<GeneratedTableDisplay> {
       CustomColumnHeader("course\n code"),
       CustomColumnHeader("course\n name"),
       CustomColumnHeader("section"),
-      CustomColumnHeader("Activity"),
       CustomColumnHeader("Time"),
       CustomColumnHeader("hours"),
     ];
@@ -102,7 +102,6 @@ class _GeneratedTableDisplayState extends State<GeneratedTableDisplay> {
       CustomDataCell(course.code),
       CustomDataCell(course.name),
       CustomDataCell(course.sectionNumber),
-      CustomDataCell(course.activity),
       CustomDataCell(course.time),
       CustomDataCell(course.hours),
     ]);
@@ -134,13 +133,21 @@ class _GeneratedTableDisplayState extends State<GeneratedTableDisplay> {
             style: TextStyle(fontSize: 16),
           ),
           Text(
-            "total hours ${widget.chosenHours}",
+            "total hours ${totalCoursesHours.toString()}",
             style: TextStyle(fontSize: 12, color: Color(0xFF842700)),
           ),
         ],
       ),
       backgroundColor: Colors.white,
     );
+  }
+
+  int calculateCoursesHours(List<UICourse> fetchedCourses) {
+    int totalHours = 0;
+    for (var element in fetchedCourses) {
+      totalHours+= int.parse(element.hours);
+    }
+    return totalHours;
   }
 }
 
