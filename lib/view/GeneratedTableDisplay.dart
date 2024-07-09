@@ -83,7 +83,6 @@ class _GeneratedTableDisplayState extends State<GeneratedTableDisplay> {
       CustomColumnHeader("course\n code"),
       CustomColumnHeader("course\n name"),
       CustomColumnHeader("section"),
-      CustomColumnHeader("Activity"),
       CustomColumnHeader("Time"),
       CustomColumnHeader("hours"),
     ];
@@ -102,7 +101,6 @@ class _GeneratedTableDisplayState extends State<GeneratedTableDisplay> {
       CustomDataCell(course.code),
       CustomDataCell(course.name),
       CustomDataCell(course.sectionNumber),
-      CustomDataCell(course.activity),
       CustomDataCell(course.time),
       CustomDataCell(course.hours),
     ]);
