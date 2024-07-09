@@ -21,221 +21,213 @@ class _ChatPageState extends State<ChatPage> {
   bool _isDialogShowing = false;
 
   User user =
-      User(id: '1', firstName: 'John', lastName: 'Doe', role: Role.user);
+  User(id: '1', firstName: 'John', lastName: 'Doe', role: Role.user);
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: ChatAppBar(
-          isTyping: false,
-        ),
-        extendBodyBehindAppBar: true,
-        body: SafeArea(
-          child: Padding(
-            padding: const EdgeInsets.only(bottom: 18.0),
-            child: ui.Chat(
-              messages: ChatData.dummyChat,
-              inputOptions: ui.InputOptions(
-                sendButtonVisibilityMode: ui.SendButtonVisibilityMode.editing,
-              ),
-              onSendPressed: (partialText) async {
-                final message = TextMessage(
-                  author: user,
-                  createdAt: DateTime.now().millisecondsSinceEpoch,
-                  id: DateTime.now().millisecondsSinceEpoch.toString(),
-                  text: partialText.text,
+    appBar: ChatAppBar(
+      isTyping: false,
+    ),
+    extendBodyBehindAppBar: true,
+    body: SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.only(bottom: 18.0),
+        child: ui.Chat(
+          messages: ChatData.dummyChat,
+          inputOptions: ui.InputOptions(
+            sendButtonVisibilityMode: ui.SendButtonVisibilityMode.editing,
+          ),
+          onSendPressed: (partialText) async {
+            final userMessage = TextMessage(
+              author: user,
+              createdAt: DateTime.now().millisecondsSinceEpoch,
+              id: DateTime.now().millisecondsSinceEpoch.toString(),
+              text: partialText.text,
+            );
+
+            setState(() {
+              ChatData.dummyChat.insert(0, userMessage);
+            });
+
+            try {
+              final reply = await _sendPostRequest(partialText.text);
+
+              final botMessage = TextMessage(
+                author: User(
+                  id: '2',
+                  firstName: 'Chat',
+                  lastName: 'Bot',
+                  role: Role.user,
+                ),
+                createdAt: DateTime.now().millisecondsSinceEpoch + 1,
+                id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
+                text: reply,
+              );
+
+              setState(() {
+                ChatData.dummyChat.insert(0, botMessage);
+              });
+            } catch (e) {
+              _showErrorDialog(context, e.toString());
+              print('Error: $e');
+
+              setState(() {
+                final errorMessage = TextMessage(
+                  author: User(
+                    id: '2',
+                    firstName: 'Chat',
+                    lastName: 'Bot',
+                    role: Role.user,
+                  ),
+                  createdAt: DateTime.now().millisecondsSinceEpoch + 1,
+                  id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
+                  text: 'Error: Failed to load chat data',
                 );
 
-                print("Chat page The message is  " + partialText.text);
+                ChatData.dummyChat.insert(0, errorMessage);
+              });
+            }
+          },
 
-                try {
-                  // Await the reply from the API
-                  setState(() {
-                    ChatData.dummyChat.insert(0, message);
-                  });
-                  final reply = await _sendPostRequest(partialText.text);
-
-                  print("Chat page  The reply is " + reply);
-
-                  setState(() {
-                    ChatData.dummyChat.insert(
-                      1,
-                      TextMessage(
-                        author: User(
-                          id: '2',
-                          firstName: 'Chat',
-                          lastName: 'Bot',
-                          role: Role.user,
-                        ),
-                        createdAt: DateTime.now().millisecondsSinceEpoch + 1,
-                        id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
-                        text: reply,
-                      ),
-                    );
-                    // Insert user message first
-                  });
-                } catch (e) {
-                  print('Error: $e');
-                  setState(() {
-                    ChatData.dummyChat.insert(0, message);
-                  });
-                  setState(() {
-                    ChatData.dummyChat.insert(
-                      1,
-                      TextMessage(
-                        author: User(
-                          id: '2',
-                          firstName: 'Chat',
-                          lastName: 'Bot',
-                          role: Role.user,
-                        ),
-                        createdAt: DateTime.now().millisecondsSinceEpoch + 1,
-                        id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
-                        text: 'Error: Failed to load chat data',
-                      ),
-                    );// Insert user message first
-                  });
-                }
-              },
-
-              emptyState: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Image(
-                    image: const AssetImage('assets/robot.png'),
-                    width: 150,
-                    height: 150,
-                  ),
-                  const Text(
-                    'Ask your assistant something',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  const SizedBox(height: 3),
-                  InkWell(
-                    onTap: () => launchUrl(
-                      Uri.parse('https://www.aaup.edu/'),
-                    ),
-                    child: Text(
-                      'More about Chatbot',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w400,
-                        color: Theme.of(context).primaryColor,
-                      ),
-                    ),
-                  ),
-                ],
+          emptyState: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image(
+                image: const AssetImage('assets/robot.png'),
+                width: 150,
+                height: 150,
               ),
-              user: user,
-              scrollPhysics: const BouncingScrollPhysics(),
-              dateHeaderBuilder: (header) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Center(
-                  child: Text(
-                    DateFormat('MMMM d, y').format(header.dateTime),
-                    style: const TextStyle(
-                      color: Color.fromARGB(255, 138, 138, 138),
-                      fontSize: 12,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
+              const Text(
+                'Ask your assistant something',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
-              theme: ui.DefaultChatTheme(
-                backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-
-                /// MESSAGES
-                messageInsetsHorizontal: 10,
-                messageInsetsVertical: 8,
-                messageBorderRadius: 14,
-                primaryColor: Theme.of(context).primaryColor,
-                secondaryColor: Colors.grey.shade200,
-                receivedMessageBodyTextStyle: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  height: 1.3,
+              const SizedBox(height: 3),
+              InkWell(
+                onTap: () => launchUrl(
+                  Uri.parse('https://www.aaup.edu/'),
                 ),
-                sentMessageBodyTextStyle: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  height: 1.3,
-                ),
-
-                /// INPUT
-                inputBorderRadius: BorderRadius.zero,
-                inputBackgroundColor: Colors.white,
-                inputTextColor: Colors.black,
-                inputTextCursorColor: Theme.of(context).primaryColor,
-                inputPadding: const EdgeInsets.only(
-                  left: 10,
-                  right: 10,
-                  top: 7,
-                ),
-                inputTextStyle: const TextStyle(
-                  fontSize: 14,
-                  fontWeight: FontWeight.w400,
-                  height: 1.3,
-                ),
-                inputContainerDecoration: const BoxDecoration(
-                  border: Border(
-                    top: BorderSide(
-                      color: Color(0xFF92705B),
-                      width: 0.5,
-                    ),
-                  ),
-                ),
-                inputTextDecoration: const InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(14)),
-                  ),
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(14)),
-                    borderSide: BorderSide(
-                      color: Color(0xFF92705B),
-                      width: 0.5,
-                    ),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(14)),
-                    borderSide: BorderSide(
-                      color: Color(0xFF92705B),
-                      width: 0.5,
-                    ),
-                  ),
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal: 13,
-                    vertical: 8,
-                  ),
-                  isCollapsed: true,
-                ),
-
-                /// SEND BUTTON
-                sendButtonMargin: EdgeInsets.zero,
-                sendButtonIcon: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(14)),
+                child: Text(
+                  'More about Chatbot',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
                     color: Theme.of(context).primaryColor,
                   ),
-                  padding: const EdgeInsets.all(2),
-                  child: Transform.rotate(
-                    angle: 1.5708,
-                    child: const Icon(
-                      Icons.arrow_back_rounded,
-                      color: Colors.white,
-                      size: 19,
-                    ),
-                  ),
+                ),
+              ),
+            ],
+          ),
+          user: user,
+          scrollPhysics: const BouncingScrollPhysics(),
+          dateHeaderBuilder: (header) => Padding(
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Center(
+              child: Text(
+                DateFormat('MMMM d, y').format(header.dateTime),
+                style: const TextStyle(
+                  color: Color.fromARGB(255, 138, 138, 138),
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ),
+          theme: ui.DefaultChatTheme(
+            backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+
+            /// MESSAGES
+            messageInsetsHorizontal: 10,
+            messageInsetsVertical: 8,
+            messageBorderRadius: 14,
+            primaryColor: Theme.of(context).primaryColor,
+            secondaryColor: Colors.grey.shade200,
+            receivedMessageBodyTextStyle: const TextStyle(
+              color: Colors.black,
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              height: 1.3,
+            ),
+            sentMessageBodyTextStyle: const TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              height: 1.3,
+            ),
+
+            /// INPUT
+            inputBorderRadius: BorderRadius.zero,
+            inputBackgroundColor: Colors.white,
+            inputTextColor: Colors.black,
+            inputTextCursorColor: Theme.of(context).primaryColor,
+            inputPadding: const EdgeInsets.only(
+              left: 10,
+              right: 10,
+              top: 7,
+            ),
+            inputTextStyle: const TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.w400,
+              height: 1.3,
+            ),
+            inputContainerDecoration: const BoxDecoration(
+              border: Border(
+                top: BorderSide(
+                  color: Color(0xFF92705B),
+                  width: 0.5,
+                ),
+              ),
+            ),
+            inputTextDecoration: const InputDecoration(
+              border: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(14)),
+              ),
+              enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(14)),
+                borderSide: BorderSide(
+                  color: Color(0xFF92705B),
+                  width: 0.5,
+                ),
+              ),
+              focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.all(Radius.circular(14)),
+                borderSide: BorderSide(
+                  color: Color(0xFF92705B),
+                  width: 0.5,
+                ),
+              ),
+              contentPadding: EdgeInsets.symmetric(
+                horizontal: 13,
+                vertical: 8,
+              ),
+              isCollapsed: true,
+            ),
+
+            /// SEND BUTTON
+            sendButtonMargin: EdgeInsets.zero,
+            sendButtonIcon: Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(14)),
+                color: Theme.of(context).primaryColor,
+              ),
+              padding: const EdgeInsets.all(2),
+              child: Transform.rotate(
+                angle: 1.5708,
+                child: const Icon(
+                  Icons.arrow_back_rounded,
+                  color: Colors.white,
+                  size: 19,
                 ),
               ),
             ),
           ),
         ),
-      bottomNavigationBar: BottomNavigationBar(
+      ),
+    ),
+    bottomNavigationBar: BottomNavigationBar(
       currentIndex: 1,
       type: BottomNavigationBarType.fixed,
       items: [
@@ -259,7 +251,7 @@ class _ChatPageState extends State<ChatPage> {
         );
       },
     ),
-      );
+  );
   final List<Widget> pages = [
     HomePage(
       studentId: "",
