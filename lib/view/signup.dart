@@ -15,7 +15,7 @@ class SignUpPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Sign Up Page',
+          'انشاء حساب جديد',
           style: TextStyle(color: Color(0xFF92705B)),
         ),
       ),
@@ -30,25 +30,25 @@ class SignUpPage extends StatelessWidget {
                   height: 250,
                 ),
                 RoundedTextField(
-                  label: 'Full Name',
+                  label: 'الاسم الكامل',
                   width: 320,
                   controller: nameController,
                 ),
                 const SizedBox(height: 25),
                 RoundedTextField(
-                  label: 'Student ID',
+                  label: 'الرقم الجامعي',
                   width: 320,
                   controller: idController,
                 ),
                 const SizedBox(height: 25),
                 RoundedTextField(
-                  label: 'Email',
+                  label: ' الايميل',
                   width: 320,
                   controller: emailController,
                 ),
                 const SizedBox(height: 25),
                 RoundedTextField(
-                  label: 'Password',
+                  label: 'الرمز السري',
                   isPassword: true,
                   width: 320,
                   controller: passwordController,
@@ -63,7 +63,7 @@ class SignUpPage extends StatelessWidget {
                     backgroundColor: const Color(0xFF842700),
                     foregroundColor: Colors.white,
                   ),
-                  child: const Text('Sign Up'),
+                  child: const Text('انشاء حساب'),
                 ),
               ],
             )
@@ -113,7 +113,7 @@ class SignUpPage extends StatelessWidget {
       // Handle registration failure
       // You can show an error message to the user
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text("Registration failed. Please try again."),
+        content: Text(" فشل التسجيل الرجاء التأكد من البيانات المدخلة والمحاولة مرة أخرى"),
         duration: Duration(seconds: 3),
       ));
     }

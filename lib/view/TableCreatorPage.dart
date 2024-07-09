@@ -55,7 +55,7 @@ class _TableCreatorPageState extends State<TableCreatorPage> {
                 ),
                 Container(width: 8),
                 const Text(
-                  "Table Creator",
+                  "منشئ الجدول",
                   style: TextStyle(fontSize: 16),
                 ),
               ],
@@ -74,8 +74,7 @@ class _TableCreatorPageState extends State<TableCreatorPage> {
                 VerticalSpacing(16),
                 VerticalSpacing(12),
                 Center(
-                  child: const Text(
-                      "The times should be between 8:30 and 4:30 for the face-to-face lectures"),
+                  child: const Text("يجب أن تكون الأوقات بين الساعة 8:30 والساعة 4:30 للمحاضرات الوجه لوجه."),
                 )
               ],
             ),
@@ -89,7 +88,7 @@ class _TableCreatorPageState extends State<TableCreatorPage> {
           navigateToDisplayTable();
         },
         child: Text(
-          "Generate",
+          "أنشئ الجدول",
           style: TextStyle(color: Colors.white),
         ),
         style: ElevatedButton.styleFrom(
@@ -111,7 +110,7 @@ class _TableCreatorPageState extends State<TableCreatorPage> {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               children: [
-                Text("Starting Time : Ending Time"),
+                Text("وقت النهاية   :   وقت البداية"),
               ],
               mainAxisAlignment: MainAxisAlignment.spaceAround,
             ),
@@ -148,7 +147,7 @@ class _TableCreatorPageState extends State<TableCreatorPage> {
         children: [
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: Text("Hours Interval "),
+            child: Text("الساعات"),
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

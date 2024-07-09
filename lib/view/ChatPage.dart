@@ -80,7 +80,7 @@ class _ChatPageState extends State<ChatPage> {
                   ),
                   createdAt: DateTime.now().millisecondsSinceEpoch + 1,
                   id: (DateTime.now().millisecondsSinceEpoch + 1).toString(),
-                  text: 'Error: Failed to load chat data',
+                  text: 'فشل الاتصال بالخادم. الرجاء المحاولة مرة أخرى.',
                 );
 
                 ChatData.dummyChat.insert(0, errorMessage);
@@ -97,7 +97,7 @@ class _ChatPageState extends State<ChatPage> {
                 height: 150,
               ),
               const Text(
-                'Ask your assistant something',
+                'إسأل المساعد',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 20,
@@ -110,7 +110,7 @@ class _ChatPageState extends State<ChatPage> {
                   Uri.parse('https://www.aaup.edu/'),
                 ),
                 child: Text(
-                  'More about Chatbot',
+                  'المزيد من المعلومات',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 16,
@@ -270,14 +270,14 @@ class _ChatPageState extends State<ChatPage> {
     await showCupertinoModalPopup<void>(
       context: context,
       builder: (context) => CupertinoAlertDialog(
-        title: const Text('An error has occurred'),
+        title: const Text('حدث خطأ'),
         content: Text(error),
         actions: [
           CupertinoDialogAction(
             isDefaultAction: true,
             onPressed: () => Navigator.pop(context),
             child: Text(
-              'Okay',
+              'حسنا',
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 17,

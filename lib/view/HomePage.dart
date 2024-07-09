@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
     setAsLoggedIn();
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home'),
+        title: Text('الصفحة الرئيسية'),
       ),
       body: Center(
         child: Column(
@@ -51,10 +51,7 @@ class _HomePageState extends State<HomePage> {
             Container(
               padding: EdgeInsets.all(25.0),
               child: Text(
-                'Welcome to Mosaed, where we effortlessly transform your student data into organized tables! Simplify your workload and enhance efficiency with just a few clicks.'
-                    '\n\nand Chat with our Ai powered chatbot to get more information about your courses and your schedule.',
-
-
+                'مرحبًا بكم في مساعد، حيث نقوم بتحويل بيانات طلابك بسهولة إلى جداول منظمة! قم بتبسيط عملك وزيادة كفاءتك ببضع نقرات فقط. تحدث مع روبوت الدردشة المدعوم بالذكاء الاصطناعي لدينا للحصول على مزيد من المعلومات حول دوراتك وجدولك الزمني.',
                 textAlign: TextAlign.center,
               ),
             ),
@@ -68,7 +65,7 @@ class _HomePageState extends State<HomePage> {
                 );
               },
               child: Text(
-                'Create New Table',
+                'أنشئ جدولًا جديدًا',
                 style: TextStyle(color: Colors.white),
               ),
               style: ElevatedButton.styleFrom(
@@ -92,7 +89,7 @@ class _HomePageState extends State<HomePage> {
                           )),
                 ); // Add functionality for updating passed courses
               },
-              child: Text('Update Passed Courses',
+              child: Text('حدث معلومات المواد الدراسية',
                   style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 fixedSize: Size(250, 70),
@@ -111,7 +108,7 @@ class _HomePageState extends State<HomePage> {
                     'https://www.aaup.edu/Academics/Undergraduate-Studies/Faculty-Engineering/Computer-Systems-Engineering-Department/Computer-Systems-Engineering/Curriculum');
               },
               child:
-                  Text('Go to CSE Plan', style: TextStyle(color: Colors.white)),
+                  Text('اذهب الى خطة CSE', style: TextStyle(color: Colors.white)),
               style: ElevatedButton.styleFrom(
                 fixedSize: Size(250, 70),
                 backgroundColor: Color(0xff842700),
@@ -159,7 +156,7 @@ class Page1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create New Table'),
+        title: Text('أنشئ جدول جديد'),
       ),
       body: Center(
         child: Text('Page 1 Content'),

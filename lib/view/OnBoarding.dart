@@ -19,8 +19,12 @@ class OnBoarding extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text("You AI Assistant",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-              Text("Using this software\n,you can get answers about the university\nand create your table anywhere.",textAlign: TextAlign.center,),
+              Text("مساعدك الشخصي بالذكاء الاصطناعي",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+              Text(
+                "باستخدام هذا البرنامج، يمكنك الحصول على إجابات حول الجامعة\n وإنشاء جدولك الخاص في أي مكان.",
+                textAlign: TextAlign.center,
+              ),
+
               Image.asset('assets/robot.png'),
               ElevatedButton(
                 onPressed: () {
@@ -38,7 +42,7 @@ class OnBoarding extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Center(child: const Text('Next Screen',style: TextStyle(fontSize: 20),)),
+                    Center(child: const Text('الشاشة التالية',style: TextStyle(fontSize: 20),)),
                     Icon(Icons.arrow_forward_ios_outlined)
                   ],
                 ),

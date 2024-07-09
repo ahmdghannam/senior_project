@@ -1,11 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_course_project/view/login.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../model/localDatabase/sharedPrefferences.dart';
 import 'ChatPage.dart';
 import 'HomePage.dart';
-import 'TableCreatorPage.dart';
 
 void main() {
   runApp(ProfilePage());
@@ -112,7 +110,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                 child: Column(
                                   children: [
                                     buildTextField(
-                                        "Name", userName, Icons.person),
+                                        "الاسم", userName, Icons.person),
                                     SizedBox(
                                       height: 15,
                                     ),
@@ -122,17 +120,17 @@ class _ProfilePageState extends State<ProfilePage> {
                                       height: 15,
                                     ),
                                     buildTextField(
-                                        "Major", userMajor, Icons.work),
+                                        "التخصص", userMajor, Icons.work),
                                     SizedBox(
                                       height: 15,
                                     ),
-                                    buildTextField("Passed Hours",
+                                    buildTextField("الساعات المنجزة",
                                         passedHours.toString(), Icons.done),
                                     SizedBox(
                                       height: 15,
                                     ),
                                     buildTextField(
-                                        "Remaining Hours",
+                                        "الساعات المتبقية",
                                         remainingHours.toString(),
                                         Icons.timelapse_outlined),
                                   ],
