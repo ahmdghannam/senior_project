@@ -249,14 +249,17 @@ class StartingPageState extends State<StartingPage> {
 
   void submitStatus(BuildContext context) {
     Map<String, bool> coursesStatus = {};
+    int hourscount = 0;
 
     for (int yearIndex = 0; yearIndex < isSelectedList.length; yearIndex++) {
       YearData yearData = yearDataList[yearIndex];
-      for (int itemIndex = 0;
-      itemIndex < isSelectedList[yearIndex].length;
-      itemIndex++) {
+      for (int itemIndex = 0; itemIndex < isSelectedList[yearIndex].length; itemIndex++) {
         String courseId = yearData.items[itemIndex].courseId.toString();
         bool isSelected = isSelectedList[yearIndex][itemIndex];
+
+        if(isSelected == true){
+          hourscount +=  yearData.items[itemIndex].creditHours;
+        }
 
         // Save the status to the coursesStatus map
         coursesStatus[courseId] = isSelected;
@@ -264,7 +267,7 @@ class StartingPageState extends State<StartingPage> {
     }
 
     // Save the coursesStatus map to Firestore
-    saveStatusToFirestore(context, widget.studentId, coursesStatus);
+    saveStatusToFirestore(context, widget.studentId, coursesStatus, hourscount);
 
     Navigator.pushReplacement(
       context,
@@ -275,7 +278,7 @@ class StartingPageState extends State<StartingPage> {
     );
   }
 
-  void saveStatusToFirestore(BuildContext context, String studentId,Map<String, bool> coursesStatus) async {
+  void saveStatusToFirestore(BuildContext context, String studentId,Map<String, bool> coursesStatus, int hourscount) async {
     try {
       // Add or update the document in the 'student-course' collection
       await FirebaseFirestore.instance
@@ -285,6 +288,7 @@ class StartingPageState extends State<StartingPage> {
           .set({
         'studentId': studentId,
         'courses': coursesStatus,
+        'hourscount': hourscount,
       });
     } catch (e) {
       print('Error saving status to Firestore: $e');

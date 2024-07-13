@@ -26,11 +26,21 @@ final List<Widget> pages = [
 
 class _ProfilePageState extends State<ProfilePage> {
   late Future<DocumentSnapshot> userFuture;
+  late Future<DocumentSnapshot> userCoursesFuture;
 
   @override
   void initState() {
     super.initState();
     userFuture = loadUserInfo();
+    userCoursesFuture = loadUserCourses();
+  }
+
+  Future<DocumentSnapshot> loadUserCourses() async {
+    // Get user ID from SharedPreferences
+    String userID = await getUserID() ?? '';
+
+    // Fetch user courses information from Firestore
+    return FirebaseFirestore.instance.collection('student-course').doc(userID).get();
   }
 
   Future<DocumentSnapshot> loadUserInfo() async {
@@ -100,10 +110,6 @@ class _ProfilePageState extends State<ProfilePage> {
                               String userID = userSnapshot['id'] ?? '';
                               // String userMajor = userSnapshot['major'] ?? '';
                               String userMajor = 'CSE';
-                              // int passedHours = userSnapshot['passedHours'] ?? 0;
-                              int passedHours = 130;
-                              // int remainingHours = userSnapshot['remainingHours'] ?? 0;
-                              int remainingHours = 30;
                               return Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 8),
@@ -124,15 +130,30 @@ class _ProfilePageState extends State<ProfilePage> {
                                     SizedBox(
                                       height: 15,
                                     ),
-                                    buildTextField("الساعات المنجزة",
-                                        passedHours.toString(), Icons.done),
-                                    SizedBox(
-                                      height: 15,
+                                    FutureBuilder<DocumentSnapshot>(
+                                      future: userCoursesFuture,
+                                      builder: (context, snapshot) {
+                                        if (snapshot.connectionState == ConnectionState.waiting) {
+                                          return Center(child: CircularProgressIndicator());
+                                        } else if (snapshot.hasError) {
+                                          return Text('Error: ${snapshot.error}');
+                                        } else if (snapshot.hasData) {
+                                          var coursesSnapshot = snapshot.data!;
+                                          int passedHours = coursesSnapshot['hourscount'] ?? 0;
+                                          int remainingHours = 163 - passedHours;
+                                          return Column(
+                                              children: [buildTextField("الساعات المنجزة",passedHours.toString(), Icons.done),
+                                            SizedBox(
+                                              height: 15,
+                                            ),
+                                          buildTextField("الساعات المتبقية",remainingHours.toString(),Icons.timelapse_outlined)
+                                          ],
+                                          );
+                                        }
+                                        return SizedBox.shrink(); // Placeholder widget
+                                      },
                                     ),
-                                    buildTextField(
-                                        "الساعات المتبقية",
-                                        remainingHours.toString(),
-                                        Icons.timelapse_outlined),
+
                                   ],
                                 ),
                               );
