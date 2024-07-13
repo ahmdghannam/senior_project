@@ -181,7 +181,7 @@ Future<List<UICourse>> getSuggestedCourses(
   });
 
 
-  print("after: " + neededCourses.length.toString());
+  print("after: "  + neededCourses.length.toString());
 
   // Attempt to generate a schedule using the provided inputs
   if (generateSchedule(neededCourses, sections, tableToBeDisplayed, 0,
