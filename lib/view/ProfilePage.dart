@@ -36,11 +36,12 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<DocumentSnapshot> loadUserCourses() async {
-    // Get user ID from SharedPreferences
     String userID = await getUserID() ?? '';
 
-    // Fetch user courses information from Firestore
-    return FirebaseFirestore.instance.collection('student-course').doc(userID).get();
+    return FirebaseFirestore.instance
+        .collection('student-course')
+        .doc(userID)
+        .get();
   }
 
   Future<DocumentSnapshot> loadUserInfo() async {
@@ -49,6 +50,53 @@ class _ProfilePageState extends State<ProfilePage> {
 
     // Fetch user information from Firestore
     return FirebaseFirestore.instance.collection('student').doc(userID).get();
+  }
+
+  Future<void> updateUserId(String newUserId) async {
+    String currentUserId = await getUserID() ?? '';
+    if (currentUserId.isNotEmpty) {
+      await FirebaseFirestore.instance
+          .collection('student')
+          .doc(currentUserId)
+          .update({'id': newUserId});
+      saveUserID(newUserId);
+      setState(() async {
+        userFuture = loadUserInfo();
+        userCoursesFuture = loadUserCourses();
+      });
+    }
+  }
+
+  showEditUserIdDialog(String currentUserId) {
+    TextEditingController userIdController =
+        TextEditingController(text: currentUserId);
+    return showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          title: Text('Edit User ID'),
+          content: TextField(
+            controller: userIdController,
+            decoration: InputDecoration(hintText: "Enter new User ID"),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+              child: Text('الغاء'),
+            ),
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop();
+                updateUserId(userIdController.text);
+              },
+              child: Text('تأكيد'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -85,6 +133,32 @@ class _ProfilePageState extends State<ProfilePage> {
           body: Stack(
             alignment: Alignment.center,
             children: [
+              CustomPaint(
+                child: Container(
+                  width: MediaQuery.of(context).size.width,
+                  height: MediaQuery.of(context).size.height,
+                ),
+                painter: HeaderCurvedContainer(),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    width: MediaQuery.of(context).size.width / 2.5,
+                    height: MediaQuery.of(context).size.width / 2.5,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: Colors.white, width: 5),
+                      shape: BoxShape.circle,
+                      color: Colors.white,
+                      image: DecorationImage(
+                        image: AssetImage('assets/profilePlaceHolder.jpg'),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
               Column(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
@@ -121,7 +195,14 @@ class _ProfilePageState extends State<ProfilePage> {
                                       height: 15,
                                     ),
                                     buildTextField(
-                                        "ID", userID, Icons.numbers_sharp),
+                                        "ID", userID, Icons.numbers_sharp,
+                                        suffixIcon: IconButton(
+                                          icon: Icon(
+                                            Icons.edit,
+                                          ),
+                                          onPressed: () =>
+                                              showEditUserIdDialog(userID),
+                                        )),
                                     SizedBox(
                                       height: 15,
                                     ),
@@ -133,27 +214,41 @@ class _ProfilePageState extends State<ProfilePage> {
                                     FutureBuilder<DocumentSnapshot>(
                                       future: userCoursesFuture,
                                       builder: (context, snapshot) {
-                                        if (snapshot.connectionState == ConnectionState.waiting) {
-                                          return Center(child: CircularProgressIndicator());
+                                        if (snapshot.connectionState ==
+                                            ConnectionState.waiting) {
+                                          return Center(
+                                              child:
+                                                  CircularProgressIndicator());
                                         } else if (snapshot.hasError) {
-                                          return Text('Error: ${snapshot.error}');
+                                          return Text(
+                                              'Error: ${snapshot.error}');
                                         } else if (snapshot.hasData) {
                                           var coursesSnapshot = snapshot.data!;
-                                          int passedHours = coursesSnapshot['hourscount'] ?? 0;
-                                          int remainingHours = 163 - passedHours;
+                                          int passedHours = 0;
+                                          // int passedHours = coursesSnapshot['hourscount'] ?? 0;
+
+                                          int remainingHours =
+                                              163 - passedHours;
                                           return Column(
-                                              children: [buildTextField("الساعات المنجزة",passedHours.toString(), Icons.done),
-                                            SizedBox(
-                                              height: 15,
-                                            ),
-                                          buildTextField("الساعات المتبقية",remainingHours.toString(),Icons.timelapse_outlined)
-                                          ],
+                                            children: [
+                                              buildTextField(
+                                                  "الساعات المنجزة",
+                                                  passedHours.toString(),
+                                                  Icons.done),
+                                              SizedBox(
+                                                height: 15,
+                                              ),
+                                              buildTextField(
+                                                  "الساعات المتبقية",
+                                                  remainingHours.toString(),
+                                                  Icons.timelapse_outlined)
+                                            ],
                                           );
                                         }
-                                        return SizedBox.shrink(); // Placeholder widget
+                                        return SizedBox
+                                            .shrink(); // Placeholder widget
                                       },
                                     ),
-
                                   ],
                                 ),
                               );
@@ -163,32 +258,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                   )
-                ],
-              ),
-              CustomPaint(
-                child: Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                ),
-                painter: HeaderCurvedContainer(),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    width: MediaQuery.of(context).size.width / 2.5,
-                    height: MediaQuery.of(context).size.width / 2.5,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: Colors.white, width: 5),
-                      shape: BoxShape.circle,
-                      color: Colors.white,
-                      image: DecorationImage(
-                        image: AssetImage('assets/profilePlaceHolder.jpg'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ],
@@ -220,7 +289,8 @@ class _ProfilePageState extends State<ProfilePage> {
         ));
   }
 
-  Widget buildTextField(String label, String text, IconData icon) {
+  Widget buildTextField(String label, String text, IconData icon,
+      {IconButton? suffixIcon}) {
     return TextField(
       decoration: InputDecoration(
         labelText: label,
@@ -237,7 +307,7 @@ class _ProfilePageState extends State<ProfilePage> {
           gapPadding: 5,
         ),
         floatingLabelBehavior: FloatingLabelBehavior.always,
-        suffixIcon: Icon(icon),
+        suffixIcon: suffixIcon ?? Icon(icon),
       ),
     );
   }
