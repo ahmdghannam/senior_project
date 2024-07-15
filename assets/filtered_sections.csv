@@ -330,17 +330,8 @@ CAMPUS_NO,COURSE_CODE,COURSE_NAME,CRD_HRS,STUDY_CODE,STUDY_DESC,ACTIVITY_CODE,AC
 1,230114170,PRINCIPLES OF TELECOMUNIACTION,3,1,Bachelor,1,Lecture,1,1,Electrical Engineering Department,[13:00-14:15 EIT 105 Monday Wednesday],,,1
 1,230114230,ELECTRICAL MACHINES LAB,1,1,Bachelor,2,Lab,1,1,Electrical Engineering Department,[08:30-11:20 ENG 201 Wednesday],,,0
 1,230114260,PRINCIPLES OF TELECOMUNIACTION LAB,1,1,Bachelor,2,Lab,1,1,Electrical Engineering Department,[14:30-17:20 EIT 110 Sunday],,,0
-1,230114310,INTERNSHIP,6,1,Bachelor,1,Lecture,1,1,Electrical Engineering Department,[09:00-15:00  9999 Sunday Tuesday Thursday],,,0
-1,230114310,INTERNSHIP,6,1,Bachelor,1,Lecture,2,1,Electrical Engineering Department,[09:00-15:00  9999 Saturday Monday Wednesday],,,1
 1,230115110,COMPUTER APPLICATIONS FOR ELECTRICAL POWER AND RENEWABLE ENERGY LAB,1,1,Bachelor,2,Lab,1,1,Electrical Engineering Department,[08:30-11:20 ENG 203 Monday],,,1
 1,230115110,COMPUTER APPLICATIONS FOR ELECTRICAL POWER AND RENEWABLE ENERGY LAB,1,1,Bachelor,2,Lab,2,1,Electrical Engineering Department,[08:30-11:20 ENG 203 Wednesday],,,0
-1,230115120,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,1,1,Electrical Engineering Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,0
-1,230115120,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,2,1,Electrical Engineering Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,0
-1,230115120,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,3,1,Electrical Engineering Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,1
-1,230115120,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,4,1,Electrical Engineering Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,0
-1,230115120,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,5,1,Electrical Engineering Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,1
-1,230115120,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,6,1,Electrical Engineering Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,1
-1,230115120,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,7,1,Electrical Engineering Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,1
 1,230115130,HIGH VOLTAGE ENGINEERING,3,1,Bachelor,1,Lecture,1,1,Electrical Engineering Department,[14:30-15:45 ENG 308 Monday Wednesday],,,0
 1,230115150,SMART GRIDS AND DISTRIBUTED GENERATION,3,1,Bachelor,1,Lecture,2,1,Electrical Engineering Department,[10:30-11:20 ENG 311 Sunday Tuesday Thursday],,,0
 1,230115160,RENEWABLE ENERGIES LAB,1,1,Bachelor,2,Lab,1,1,Electrical Engineering Department,[13:30-16:20 ENG 202 Sunday],,,0
@@ -348,10 +339,6 @@ CAMPUS_NO,COURSE_CODE,COURSE_NAME,CRD_HRS,STUDY_CODE,STUDY_DESC,ACTIVITY_CODE,AC
 1,230115160,RENEWABLE ENERGIES LAB,1,1,Bachelor,2,Lab,3,1,Electrical Engineering Department,[13:30-16:20 ENG 202 Thursday],,,0
 1,230115210,POWER SYSTEMS LAB,1,1,Bachelor,2,Lab,1,1,Electrical Engineering Department,[13:30-16:20 ENG 205 Thursday],,,0
 1,230115210,POWER SYSTEMS LAB,1,1,Bachelor,2,Lab,2,1,Electrical Engineering Department,[13:00-15:50 ENG 205 Monday],,,0
-1,230115220,SENIOR PROJECT II,3,1,Bachelor,1,Lecture,1,1,Electrical Engineering Department,[19:00-20:15  9999 Thursday][20:30-21:45  9999 Thursday],,,0
-1,230115220,SENIOR PROJECT II,3,1,Bachelor,1,Lecture,2,1,Electrical Engineering Department,[19:00-20:15  9999 Thursday][20:30-21:45  9999 Thursday],,,1
-1,230115220,SENIOR PROJECT II,3,1,Bachelor,1,Lecture,3,1,Electrical Engineering Department,[19:00-20:15  9999 Thursday][20:30-21:45  9999 Thursday],,,0
-1,230115220,SENIOR PROJECT II,3,1,Bachelor,1,Lecture,4,1,Electrical Engineering Department,[19:00-20:15  9999 Thursday][20:30-21:45  9999 Thursday],,,0
 1,230115460,HYBRID ELECTRIC POWER SYSTEMS,3,1,Bachelor,1,Lecture,1,1,Electrical Engineering Department,[11:30-12:45 ENG 308 Monday Wednesday],,,0
 1,230211210,DIGITAL LOGIC DESIGN,3,1,Bachelor,1,Lecture,1,2,CSE Department,[10:30-11:20 AFS 123 Sunday Tuesday Thursday],,,0
 1,230211210,DIGITAL LOGIC DESIGN,3,1,Bachelor,1,Lecture,2,2,CSE Department,[11:30-12:20 AFS 123 Sunday Tuesday Thursday],,,0
@@ -387,8 +374,8 @@ CAMPUS_NO,COURSE_CODE,COURSE_NAME,CRD_HRS,STUDY_CODE,STUDY_DESC,ACTIVITY_CODE,AC
 1,230214500,SELECTED TOPICS IN COMPUTER SYSTEMS ENGINEERING,3,1,Bachelor,1,Lecture,2,2,CSE Department,[08:30-09:20 EIT 217 Sunday Tuesday Thursday],,,0
 1,230214520,ARTIFICIAL INTELLIGENCE,3,1,Bachelor,1,Lecture,2,2,CSE Department,[08:30-09:45 EIT 008 Monday Wednesday],,,1
 1,230214520,ARTIFICIAL INTELLIGENCE,3,1,Bachelor,1,Lecture,3,2,CSE Department,[10:00-11:15 EIT 008 Monday Wednesday],,,1
-1,230214990,INTERNSHIP,6,1,Bachelor,1,Lecture,1,2,CSE Department,[09:00-15:00  9999 Sunday Tuesday Thursday],,,1
-1,230214990,INTERNSHIP,6,1,Bachelor,1,Lecture,2,2,CSE Department,[09:00-15:00  9999 Saturday Monday Wednesday],,,1
+1,240113992,INTERNSHIP,6,1,Bachelor,1,Lecture,1,2,CSE Department,[09:00-15:00  9999 Sunday Tuesday Thursday],,,1
+1,240113992,INTERNSHIP,6,1,Bachelor,1,Lecture,2,2,CSE Department,[09:00-15:00  9999 Saturday Monday Wednesday],,,1
 1,230215110,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,1,2,CSE Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,1
 1,230215110,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,2,2,CSE Department,[22:00-22:50  9999 Thursday][23:00-23:50  9999 Thursday],,,0
 1,230215110,SENIOR PROJECT I,2,1,Bachelor,1,Lecture,3,2,CSE Department,[22:00-22:50  99999 Thursday][23:00-23:50  99999 Thursday],,,0
@@ -500,31 +487,12 @@ CAMPUS_NO,COURSE_CODE,COURSE_NAME,CRD_HRS,STUDY_CODE,STUDY_DESC,ACTIVITY_CODE,AC
 1,240113310,INTRODUCTION TO OPERATING SYSTEMS,3,1,Bachelor,1,Lecture,1,1,Computer Science Department,[11:30-12:45 AFS 126 Wednesday][11:30-12:45 DSA 202 Monday],,,1
 1,240113310,INTRODUCTION TO OPERATING SYSTEMS,3,1,Bachelor,1,Lecture,2,1,Computer Science Department,[09:30-10:20 EIT 105 Sunday Tuesday Thursday],,,1
 1,240113620,SOFTWARE TESTING AND VALIDATION,3,1,Bachelor,1,Lecture,1,1,Computer Science Department,[08:30-09:20 EIT 001 Sunday Tuesday Thursday],,,0
-1,240113992,INTERNSHIP,3,1,Bachelor,1,Lecture,1,1,Computer Science Department,[08:00-11:40  9999 Monday Wednesday][12:30-13:20  9999 Wednesday][13:00-13:50  9999 Monday],,,0
 1,240114020,MACHINE LEARNING,3,1,Bachelor,1,Lecture,1,1,Computer Science Department,[11:30-12:45 AFS 218 Monday Wednesday],,,0
 1,240114080,THEORY OF COMPUTATION,3,1,Bachelor,1,Lecture,1,1,Computer Science Department,[11:30-12:20 EIT 009 Sunday Tuesday Thursday],,,1
 1,240114331,COMPUTER ARCHITECTURE,3,1,Bachelor,1,Lecture,1,1,Computer Science Department,[14:30-15:20 EIT 001 Sunday Tuesday Thursday],,,0
 1,240114331,COMPUTER ARCHITECTURE,3,1,Bachelor,1,Lecture,2,1,Computer Science Department,[11:30-12:45 EIT 009 Monday Wednesday],,,1
 1,240114340,UNIX LAB,1,1,Bachelor,2,Lab,1,1,Computer Science Department,[14:30-16:20 EIT 112 Thursday],,,0
 1,240114500,SPECIAL TOPIC IN IT,3,1,Bachelor,1,Lecture,1,1,Computer Science Department,[08:30-09:45  9999 Monday Wednesday],,,1
-1,240114971,COMPUTER SCIENCE SENIOR PROJECT I,1,1,Bachelor,1,Lecture,1,1,Computer Science Department,[08:00-08:50  9999 Friday],,,1
-1,240114971,COMPUTER SCIENCE SENIOR PROJECT I,1,1,Bachelor,1,Lecture,2,1,Computer Science Department,[08:00-08:50  9999 Friday],,,0
-1,240114971,COMPUTER SCIENCE SENIOR PROJECT I,1,1,Bachelor,1,Lecture,3,1,Computer Science Department,[08:00-08:50  9999 Friday],,,1
-1,240114971,COMPUTER SCIENCE SENIOR PROJECT I,1,1,Bachelor,1,Lecture,4,1,Computer Science Department,[08:00-08:50  9999 Friday],,,0
-1,240114972,SENIOR PROJECT I,1,1,Bachelor,1,Lecture,1,1,Computer Science Department,[08:00-08:50  9999 Friday],,,1
-1,240114972,SENIOR PROJECT I,1,1,Bachelor,1,Lecture,2,1,Computer Science Department,[08:00-08:50  9999 Friday],,,1
-1,240114972,SENIOR PROJECT I,1,1,Bachelor,1,Lecture,3,1,Computer Science Department,[08:00-08:50  9999 Friday],,,1
-1,240114972,SENIOR PROJECT I,1,1,Bachelor,1,Lecture,4,1,Computer Science Department,[08:00-08:50  9999 Friday],,,0
-1,240114972,SENIOR PROJECT I,1,1,Bachelor,1,Lecture,5,1,Computer Science Department,[08:00-08:50  9999 Friday],,,0
-1,240114972,SENIOR PROJECT I,1,1,Bachelor,1,Lecture,7,1,Computer Science Department,[08:00-08:50  9999 Friday],,,0
-1,240114972,SENIOR PROJECT I,1,1,Bachelor,1,Lecture,8,1,Computer Science Department,[08:00-08:50  9999 Friday],,,0
-1,240114972,SENIOR PROJECT I,1,1,Bachelor,1,Lecture,9,1,Computer Science Department,[08:00-08:50  9999 Friday],,,1
-1,240114980,SENIOR PROJECT II,2,1,Bachelor,1,Lecture,2,1,Computer Science Department,[08:00-08:50  9999 Friday][09:00-09:50  9999 Friday],,,0
-1,240114981,COMPUTER SCIENCE SENIOR PROJECT II,3,1,Bachelor,1,Lecture,2,1,Computer Science Department,[11:00-11:50  9999 Friday][12:00-12:50  9999 Friday][13:00-13:50  9999 Friday],,,1
-1,240114981,COMPUTER SCIENCE SENIOR PROJECT II,3,1,Bachelor,1,Lecture,3,1,Computer Science Department,[11:00-11:50  9999 Friday][12:00-12:50  9999 Friday][13:00-13:50  9999 Friday],,,1
-1,240114981,COMPUTER SCIENCE SENIOR PROJECT II,3,1,Bachelor,1,Lecture,4,1,Computer Science Department,[11:00-11:50  9999 Friday][12:00-12:50  9999 Friday][13:00-13:50  9999 Friday],,,1
-1,240114981,COMPUTER SCIENCE SENIOR PROJECT II,3,1,Bachelor,1,Lecture,5,1,Computer Science Department,[11:00-11:50  9999 Friday][12:00-12:50  9999 Friday][13:00-13:50  9999 Friday],,,0
-1,240114981,COMPUTER SCIENCE SENIOR PROJECT II,3,1,Bachelor,1,Lecture,6,1,Computer Science Department,[10:00-10:50  9999 Friday][11:00-11:50  9999 Friday][12:00-12:50  9999 Saturday],,,0
 1,240211013,INTRODUCTION TO INFORMATION TECHNOLOGY,2,1,Bachelor,1,Lecture,1,2,Information Technology Department,[09:30-10:20 EIT 204 Sunday Tuesday],,,1
 1,240211013,INTRODUCTION TO INFORMATION TECHNOLOGY,2,1,Bachelor,1,Lecture,5,2,Information Technology Department,[11:30-12:20 EIT 204 Sunday Tuesday],,,0
 1,240211013,INTRODUCTION TO INFORMATION TECHNOLOGY,2,1,Bachelor,1,Lecture,7,2,Information Technology Department,[11:30-12:20 EIT 204 Monday Wednesday],,,0
@@ -556,8 +524,6 @@ CAMPUS_NO,COURSE_CODE,COURSE_NAME,CRD_HRS,STUDY_CODE,STUDY_DESC,ACTIVITY_CODE,AC
 1,240213250,COMPUTER GAMES DESIGN AND DEVELOPMENT,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[09:30-10:20 EIT 002 Sunday Tuesday Thursday],,,0
 1,240213480,SPEECH COMMUNICATION AND TECHNICAL WRITING,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[08:30-09:20 EIT 101 Sunday Tuesday Thursday],,,1
 1,240213480,SPEECH COMMUNICATION AND TECHNICAL WRITING,3,1,Bachelor,1,Lecture,2,2,Information Technology Department,[09:30-10:20 EIT 101 Sunday Tuesday Thursday],,,0
-1,240213970,INTERNSHIP,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[08:00-17:00  9999 Saturday],,,1
-1,240213970,INTERNSHIP,3,1,Bachelor,1,Lecture,2,2,Information Technology Department,[08:00-11:40  9999 Monday Wednesday][12:30-13:20  9999 Wednesday][13:00-13:50  9999 Monday],,,0
 1,240214040,COMPUTER NETWORKS II,3,1,Bachelor,1,Lecture,2,2,Information Technology Department,[10:30-11:20 EIT 004 Sunday Tuesday Thursday],,,0
 1,240214100,DIGITAL VIDEO AND AUDIO,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[08:30-09:45 EIT 204 Monday Wednesday],,,1
 1,240214311,COMPUTER ANIMATION,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[14:30-15:45  9999 Monday Wednesday],,,0
@@ -566,10 +532,7 @@ CAMPUS_NO,COURSE_CODE,COURSE_NAME,CRD_HRS,STUDY_CODE,STUDY_DESC,ACTIVITY_CODE,AC
 1,240214360,SCREENWRITING AND STORYBOARDING,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[11:30-12:20 AFS 201 Sunday Tuesday Thursday],,,0
 1,240214360,SCREENWRITING AND STORYBOARDING,3,1,Bachelor,1,Lecture,2,2,Information Technology Department,[10:30-11:20 EIT 101 Sunday Tuesday Thursday],,,1
 1,240214471,INFORMATION TECHNONLOGY PROJECT MANAGEMENT,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[09:30-10:20 EIT 104 Sunday Thursday][09:30-10:20 EIT 112 Tuesday],,,0
-1,240214971,MULTIMEDIA SENIOR PROJECT I,1,1,Bachelor,1,Lecture,1,2,Information Technology Department,[15:30-16:20  9999 Thursday],,,0
-1,240214971,MULTIMEDIA SENIOR PROJECT I,1,1,Bachelor,1,Lecture,2,2,Information Technology Department,[15:30-16:20  9999 Thursday],,,1
 1,240221200,CREATIVE ARTS,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[13:00-14:15 EIT 001 Wednesday][13:00-14:15 EIT 107 Monday],,,0
 1,240221200,CREATIVE ARTS,3,1,Bachelor,1,Lecture,2,2,Information Technology Department,[14:30-15:45 EIT 101 Monday Wednesday],,,1
 1,240222500,DIGITAL PHOTOGRAPHY AND COMPOSITION,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[11:30-12:45 EIT 002 Monday Wednesday],,,0
 1,240222500,DIGITAL PHOTOGRAPHY AND COMPOSITION,3,1,Bachelor,1,Lecture,4,2,Information Technology Department,[14:30-15:45 EIT 004 Sunday Tuesday],,,0
-1,240224981,MULTIMEDIA SENIOR PROJECT II,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[08:30-09:20  9999 Saturday Friday][09:30-10:20  9999 Saturday],,,1
