@@ -56,7 +56,6 @@ extension TimeOfDayExtension on TimeOfDay {
     if (minute > other.minute) return 1;
     return 0;
   }
-
   String toStringConvert() {
     String addLeadingZeroIfNeeded(int value) {
       if (value < 10) {
@@ -99,17 +98,14 @@ Future<List<FirebaseCourse>> getFalseStatusCourses(String studentId) async {
 
   return falseStatusCourses;
 }
-
-List<CseCourse> getNeededCourses(
-    List<CseCourse>? cseCourses, List<FirebaseCourse> notFinishedCourses) {
+List<CseCourse> getNeededCourses(List<CseCourse>? cseCourses, List<FirebaseCourse> notFinishedCourses) {
   if (cseCourses == null) return [];
 
   return cseCourses
       .where((cseCourse) => notFinishedCourses.any((notFininshed) =>
-          notFininshed.code.trim() == cseCourse.courseId.trim()))
+  notFininshed.code.trim() == cseCourse.courseId.trim()))
       .toList(); // join
 }
-
 List<CseCourse> sortCourses(List<CseCourse> courses) {
   // Sort courses based on the calculated weight
   courses.sort((a, b) {
@@ -122,15 +118,13 @@ List<CseCourse> sortCourses(List<CseCourse> courses) {
 
   return courses;
 }
-
 int calculateCourseWeight(CseCourse course) {
   // Function to calculate the weight for each course based on default semester and prerequisites
   // Adjust the formula based on your specific weighting criteria
   return course.defaultSemester + course.childrenCount;
 }
 
-Future<List<UICourse>> getSuggestedCourses(
-    String start, String end, String chosenHours) async {
+Future<List<UICourse>> getSuggestedCourses(String start, String end, String chosenHours) async {
   // The University Schedule sections,
   List<Section>? sections = await loadAvailableSections();
 
@@ -143,8 +137,7 @@ Future<List<UICourse>> getSuggestedCourses(
     return throw "user id not found";
   }
   List<FirebaseCourse> notFinishedCourses = await getFalseStatusCourses(userId);
-  List<CseCourse> neededCourses =
-      getNeededCourses(cseCourses, notFinishedCourses); //join
+  List<CseCourse> neededCourses = getNeededCourses(cseCourses, notFinishedCourses); //join
   neededCourses = sortCourses(neededCourses);
   // print("neededCourses $neededCourses");
   // Default parameters to be taken from the user later
@@ -154,7 +147,7 @@ Future<List<UICourse>> getSuggestedCourses(
 
   String parts = start + "-" + end;
   List<TimeOfDay> myTimes = parseLectureTimeString(parts);
-  TimeOfDay startTime = myTimes[0], endTime = myTimes[1];
+  TimeOfDay startTime= myTimes[0], endTime = myTimes[1];
 
   // The Table to be Displayed for the user
   List<UICourse> tableToBeDisplayed = [];
@@ -184,8 +177,7 @@ Future<List<UICourse>> getSuggestedCourses(
   print("after: " + neededCourses.length.toString());
 
   // Attempt to generate a schedule using the provided inputs
-  if (generateSchedule(neededCourses, sections, tableToBeDisplayed, 0,
-      desiredCreditHours, startTime, endTime)) {
+  if (generateSchedule(neededCourses, sections, tableToBeDisplayed, 0, desiredCreditHours, startTime, endTime)) {
     // Print the successfully generated schedule
     print("Schedule generated successfully:");
   } else {
@@ -195,8 +187,7 @@ Future<List<UICourse>> getSuggestedCourses(
   return tableToBeDisplayed;
 }
 
-void removeCourseByCourseId(
-    List<UICourse> tableToBeDisplayed, String courseId) {
+void removeCourseByCourseId(List<UICourse> tableToBeDisplayed, String courseId) {
   // Iterate through the list of UICourses
   for (int i = 0; i < tableToBeDisplayed.length; i++) {
     // Check if the courseId of the current UICourse matches the provided courseId
@@ -220,6 +211,7 @@ void removeSectionBySectionId(List<Section> sections, String sectionId) {
   }
 }
 
+
 CseCourse? returnCourseByCourseId(List<CseCourse> courses, String courseId) {
   // Iterate through the list of courses
   for (int i = 0; i < courses.length; i++) {
@@ -230,8 +222,7 @@ CseCourse? returnCourseByCourseId(List<CseCourse> courses, String courseId) {
   return null;
 }
 
-String TryToAddSection(List<UICourse> tableToBeDisplayed, CseCourse course,
-    List<Section> sections) {
+String TryToAddSection(List<UICourse> tableToBeDisplayed,CseCourse course,List<Section> sections ) {
   String result = "";
   for (Section section in sections) {
     result = hasConflictWithSection(tableToBeDisplayed, section);
@@ -250,7 +241,6 @@ String TryToAddSection(List<UICourse> tableToBeDisplayed, CseCourse course,
   }
   return result;
 }
-
 bool generateSchedule(
     List<CseCourse> neededCourses,
     List<Section> sections,
@@ -258,19 +248,16 @@ bool generateSchedule(
     int currentIndex,
     int desiredCreditHours,
     TimeOfDay startTime,
-    TimeOfDay endTime) {
+    TimeOfDay endTime ) {
   bool stop = false;
   List<CseCourse> addedCourses = [];
-  for (CseCourse course in neededCourses) {
-    List<Section> CourseSections =
-        getOpenSections(sections, course, startTime, endTime);
-    if (CourseSections.length == 0) {
-      // for now only, to pass the elective courses
+  for(CseCourse course in neededCourses){
+    List<Section> CourseSections = getOpenSections(sections, course, startTime, endTime);
+    if(CourseSections.length==0){ // for now only, to pass the elective courses
       continue;
     }
-    String result = TryToAddSection(tableToBeDisplayed, course, CourseSections);
-    if (result == "") {
-      // added
+    String result = TryToAddSection(tableToBeDisplayed,course, CourseSections);
+    if(result == ""){ // added
       addedCourses.add(course);
       desiredCreditHours -= course.creditHours;
       if (desiredCreditHours <= 0) {
@@ -283,26 +270,20 @@ bool generateSchedule(
       //   addedCourses.removeLast();
       //   desiredCreditHours += course.creditHours;
       // }
-    } else {
-      // not added
+    }
+    else { // not added
       String removedCourseId = result.split('-')[0];
       String removedSectionId = result.split('-')[1];
       removeCourseByCourseId(tableToBeDisplayed, removedCourseId);
-      CseCourse? removedCourse =
-          returnCourseByCourseId(addedCourses, removedCourseId);
+      CseCourse? removedCourse = returnCourseByCourseId(addedCourses, removedCourseId);
       String newResult = "";
-      if (removedCourse != null) {
-        List<Section> sectionList =
-            getOpenSections(sections, removedCourse, startTime, endTime);
+      if(removedCourse!=null){
+        List<Section> sectionList = getOpenSections(sections, removedCourse, startTime, endTime);
         removeSectionBySectionId(sectionList, removedSectionId);
-        newResult =
-            TryToAddSection(tableToBeDisplayed, removedCourse, sectionList);
-        if (newResult == "") {
-          // added - there is another section that is not conflicting, now try to add the current course
-          String result =
-              TryToAddSection(tableToBeDisplayed, course, CourseSections);
-          if (result == "") {
-            // added -
+        newResult=TryToAddSection(tableToBeDisplayed, removedCourse, sectionList);
+        if(newResult==""){ // added - there is another section that is not conflicting, now try to add the current course
+          String result = TryToAddSection(tableToBeDisplayed,course, CourseSections);
+          if(result == ""){ // added -
             addedCourses.add(course);
             desiredCreditHours -= course.creditHours;
             if (desiredCreditHours <= 0) {
@@ -316,44 +297,44 @@ bool generateSchedule(
             //   desiredCreditHours += course.creditHours;
             // }
           }
-          // else{
-          // //   continue to the next course
-          // }
-        } else {
+        // else{
+        // //   continue to the next course
+        // }
+        }
+        else{
           // re-add the removedCourse and then continue to the next course
-          List<Section> CourseSections =
-              getOpenSections(sections, removedCourse, startTime, endTime);
-          String result = TryToAddSection(
-              tableToBeDisplayed, removedCourse, CourseSections);
-          if (result == "") {
-            // added
+          List<Section> CourseSections = getOpenSections(sections, removedCourse, startTime, endTime);
+          String result = TryToAddSection(tableToBeDisplayed,removedCourse, CourseSections);
+          if(result == ""){ // added
             addedCourses.add(removedCourse);
           }
-          //   continue to the next course
+        //   continue to the next course
         }
       }
     }
 
-    if (stop) {
+    if(stop){
       // print(addedCourses);
       return true;
     }
   }
   // print(addedCourses);
   return false;
+
 }
 
-String hasConflictWithSection(
-    List<UICourse> tableToBeDisplayed, Section newSection) {
-  if (tableToBeDisplayed == []) {
+String hasConflictWithSection(List<UICourse> tableToBeDisplayed, Section newSection) {
+  if (tableToBeDisplayed == []){
     return "";
   }
 
   for (UICourse section in tableToBeDisplayed) {
-    if (doSectionsConflict(
-        Section(int.parse(section.sectionNumber), int.parse(section.code),
-            false, section.time),
-        newSection)) {
+    if (doSectionsConflict(Section(
+        int.parse(section.sectionNumber),
+        int.parse(section.code),
+        false,
+        section.time
+    ), newSection)) {
       return '${section.code}-${section.sectionNumber}';
     }
   }
@@ -361,36 +342,34 @@ String hasConflictWithSection(
 }
 
 bool hasConflict(List<UICourse> tableToBeDisplayed, Section newSection) {
-  if (tableToBeDisplayed == []) {
-    return false;
-  }
+  if (tableToBeDisplayed == []){
+    return false;}
 
   for (UICourse section in tableToBeDisplayed) {
-    if (doSectionsConflict(
-        Section(int.parse(section.sectionNumber), int.parse(section.code),
-            false, section.time),
-        newSection)) {
+    if (doSectionsConflict(Section(
+        int.parse(section.sectionNumber),
+        int.parse(section.code),
+        false,
+        section.time
+    ), newSection)) {
       return true;
     }
   }
   return false;
 }
 
-List<Section> getOpenSections(List<Section> sections, CseCourse course,
-    TimeOfDay startTime, TimeOfDay endTime) {
+
+List<Section> getOpenSections(List<Section> sections, CseCourse course, TimeOfDay startTime, TimeOfDay endTime) {
   return sections
       .where((section) =>
           section.courseId == int.parse(course.courseId) &&
-          !section.status // The ! should be removed
-          // && doSectionsConflict(section, Section(0,0,false,'[${startTime.toStringConvert()}-${endTime.toStringConvert()}]')) // UnComment when we change the data
+          section.status // The ! should be removed
+          //  && doSectionsConflict(section, Section(0,0,false,'[${startTime.toStringConvert()}-${endTime.toStringConvert()}]')) // UnComment when we change the data
 
-          // The below is not valid
-          &&
-          (section.startTime?.compareTo(startTime) == 1 ||
-              section.startTime?.compareTo(startTime) == 0) &&
-          (section.endTime?.compareTo(endTime) == -1 ||
-              section.endTime?.compareTo(endTime) == 0))
-      .toList();
+              // The below is not valid
+              && (section.startTime?.compareTo(startTime)==1 || section.startTime?.compareTo(startTime)==0 )
+              && (section.endTime?.compareTo(endTime)==-1    || section.endTime?.compareTo(endTime)==0 )
+            ).toList();
 }
 
 // You can add more error checking here if needed
@@ -398,16 +377,13 @@ List<Section> getOpenSections(List<Section> sections, CseCourse course,
 List<TimeOfDay> parseLectureTimeString(String timeString) {
   List<String> parts = timeString.split('-'); // parts = ["13:30","14:20"]
 
-  List<String> startTimeParts =
-      parts[0].split(':'); // startTimeParts = ["13","30"]
-  TimeOfDay startTime = TimeOfDay(
-      hour: int.parse(startTimeParts[0]), minute: int.parse(startTimeParts[1]));
+  List<String> startTimeParts = parts[0].split(':'); // startTimeParts = ["13","30"]
+  TimeOfDay startTime = TimeOfDay(hour: int.parse(startTimeParts[0]), minute: int.parse(startTimeParts[1]));
 
   List<String> endTimeParts = parts[1].split(':'); // endTimeParts = ["14","20"]
-  TimeOfDay endTime = TimeOfDay(
-      hour: int.parse(endTimeParts[0]), minute: int.parse(endTimeParts[1]));
+  TimeOfDay endTime = TimeOfDay(hour: int.parse(endTimeParts[0]), minute: int.parse(endTimeParts[1]));
 
-  return [startTime, endTime];
+  return [startTime,endTime];
 }
 
 //[13:30-14:20 DAR B109 Sunday Tuesday Thursday]
@@ -426,21 +402,19 @@ bool isThereAConflict(String time, String time2) {
   TimeOfDay L2_endTime = L2_time[1];
   // v1 : if (L1_startTime.compareTo(L2_startTime)==-1 && L1_endTime.compareTo(L2_endTime)==1)
   // v2 : if (L1_endTime.compareTo(L2_startTime)==-1 || L2_endTime.compareTo(L1_startTime)==-1)
-  if ((L1_startTime.compareTo(L2_startTime) == -1 &&
-          L1_endTime.compareTo(L2_startTime) == -1) ||
-      (L2_startTime.compareTo(L1_startTime) == -1 &&
-          L2_endTime.compareTo(L1_startTime) == -1))
+  if ((L1_startTime.compareTo(L2_startTime)==-1 && L1_endTime.compareTo(L2_startTime)==-1)
+      || (L2_startTime.compareTo(L1_startTime)==-1 && L2_endTime.compareTo(L1_startTime)==-1))
     return false;
   else
     return true;
 }
 
+
 // Function to check if two sections have conflicting days and time overlap
 // may have problems, due to day/time
 bool doSectionsConflict(Section section1, Section section2) {
   // Take the days from the section 1 time
-  List<String> section1List =
-      section1.time.substring(1, section1.time.length - 1).split(' ');
+  List<String> section1List = section1.time.substring(1, section1.time.length - 1).split(' ');
   List<String> section1Days = [];
   for (int i = section1List.length - 1; i >= 0; i--) {
     if (section1List[i].endsWith("day")) {
@@ -448,8 +422,7 @@ bool doSectionsConflict(Section section1, Section section2) {
     }
   }
   // Take the days from the section 2 time
-  List<String> section2List =
-      section2.time.substring(1, section2.time.length - 1).split(' ');
+  List<String> section2List = section2.time.substring(1, section2.time.length - 1).split(' ');
   List<String> section2Days = [];
   for (int i = section2List.length - 1; i >= 0; i--) {
     if (section2List[i].endsWith("day")) {
@@ -458,7 +431,7 @@ bool doSectionsConflict(Section section1, Section section2) {
   }
   // Check conflict
   if (section1Days.any((day) => section2Days.contains(day))) {
-    if (isThereAConflict(section1.time, section2.time)) {
+    if (isThereAConflict(section1.time,section2.time)) {
       return true;
     }
   }

@@ -48,10 +48,10 @@ After:
   for (var d in _data) {
     try {
       sections.add(Section(
-          int.parse(d[8].toString()), // sectionId:
-          int.parse(d[1].toString()), //courseId:
-          false, //status:
-          d[11].toString(), // time and days time:
+        int.parse(d[8].toString()), // sectionId:
+        int.parse(d[1].toString()), //courseId:
+        int.parse(d[14].toString()) == 0 ? false : true, //status:
+        d[11].toString(), // time and days time:
       ));
     } catch (e) {
       print('Error parsing row: $d, Error: $e');
@@ -78,13 +78,13 @@ Future<List<CseCourse>> _loadCseCourses(String path) async {
   for (var d in _data) {
     try {
       courses.add(CseCourse(
-        d[0].toString(), // courseId
-        d[1].toString(), // courseName
-        int.parse(d[2].toString()), // defaultSemester
-        int.parse(d[3].toString()), // creditHours
-        int.parse(d[4].toString()),
-        int.parse(d[5].toString())// preRequisitesCourses
-      ));
+          d[0].toString(), // courseId
+          d[1].toString(), // courseName
+          int.parse(d[2].toString()), // defaultSemester
+          int.parse(d[3].toString()), // creditHours
+          int.parse(d[4].toString()),
+          int.parse(d[5].toString()) // preRequisitesCourses
+          ));
       print(d[6].toString().split(','));
     } catch (e) {
       print('Error parsing row: $d, Error: $e');
