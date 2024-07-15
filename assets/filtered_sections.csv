@@ -536,3 +536,19 @@ CAMPUS_NO,COURSE_CODE,COURSE_NAME,CRD_HRS,STUDY_CODE,STUDY_DESC,ACTIVITY_CODE,AC
 1,240221200,CREATIVE ARTS,3,1,Bachelor,1,Lecture,2,2,Information Technology Department,[14:30-15:45 EIT 101 Monday Wednesday],,,1
 1,240222500,DIGITAL PHOTOGRAPHY AND COMPOSITION,3,1,Bachelor,1,Lecture,1,2,Information Technology Department,[11:30-12:45 EIT 002 Monday Wednesday],,,0
 1,240222500,DIGITAL PHOTOGRAPHY AND COMPOSITION,3,1,Bachelor,1,Lecture,4,2,Information Technology Department,[14:30-15:45 EIT 004 Sunday Tuesday],,,0
+1,040111001,ARABIC LANGUAGE,2,1,Bachelor,1,Lecture,1,32,Arabic Language & Media Department,[17:30-18:20  Electronic Sunday Tuesday],,,1
+1,040111001,ARABIC LANGUAGE,2,1,Bachelor,1,Lecture,5,32,Arabic Language & Media Department,[17:30-18:20  Electronic Monday Wednesday],,,0
+1,040111001,ARABIC LANGUAGE,2,1,Bachelor,1,Lecture,16,32,Arabic Language & Media Department,[20:30-21:20  Electronic Sunday Tuesday],,,1
+1,040111001,ARABIC LANGUAGE,2,13,Diploma,1,Lecture,18,32,Arabic Language & Media Department,[20:30-21:20  Electronic Monday Wednesday],,,0
+1,040111001,ARABIC LANGUAGE,2,13,Diploma,1,Lecture,19,32,Arabic Language & Media Department,[19:30-20:20  Electronic Monday Wednesday],,,1
+1,040111001,ARABIC LANGUAGE,2,1,Bachelor,1,Lecture,44,32,Arabic Language & Media Department,[08:30-09:20 AFS 225 Monday Wednesday],,,0
+1,040111001,ARABIC LANGUAGE,2,1,Bachelor,1,Lecture,45,32,Arabic Language & Media Department,[08:30-09:20 AFS 223 Sunday Tuesday],,,1
+1,040111001,ARABIC LANGUAGE,2,1,Bachelor,1,Lecture,46,32,Arabic Language & Media Department,[14:30-15:20 AFS 221 Monday Wednesday],,,0
+1,040111001,ARABIC LANGUAGE,2,1,Bachelor,1,Lecture,47,32,Arabic Language & Media Department,[20:30-21:20  Electronic Monday Wednesday],,,0
+1,040111001,ARABIC LANGUAGE,2,13,Diploma,1,Lecture,48,32,Arabic Language & Media Department,[14:30-15:20 AFS 221 Monday Wednesday],,,0
+1,040511011,PALESTINIAN STUDIES,2,1,Bachelor,1,Lecture,10,36,General Education Department,[16:30-17:20  Electronic Monday Wednesday],,,1
+1,040511011,PALESTINIAN STUDIES,2,1,Bachelor,1,Lecture,12,36,General Education Department,[18:30-19:20  Electronic Monday Wednesday],,,0
+1,040511011,PALESTINIAN STUDIES,2,13,Diploma,1,Lecture,19,36,General Education Department,[17:30-18:20  Electronic Monday Wednesday],,,1
+1,040511011,PALESTINIAN STUDIES,2,13,Diploma,1,Lecture,20,36,General Education Department,[18:30-19:20  Electronic Sunday Tuesday],,,0
+1,040511011,PALESTINIAN STUDIES,2,1,Bachelor,1,Lecture,22,36,General Education Department,[11:30-12:20 AMS-B B201 Monday Wednesday],,,1
+1,040511011,PALESTINIAN STUDIES,2,1,Bachelor,1,Lecture,25,36,General Education Department,[13:30-14:20 AFS 223 Sunday Tuesday],,,0

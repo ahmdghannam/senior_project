@@ -376,7 +376,7 @@ bool hasConflict(List<UICourse> tableToBeDisplayed, Section newSection) {
   return false;
 }
 
-var excludedCourses=[230215110, 230215220, 240113992]; // senior 1,2 and internship
+var excludedCourses=[230215110, 230215220, 240113992, 40511011, 40111001]; // senior 1,2, internship, arabic, palestinan studies IDs
 bool isSuitableTime(Section section, TimeOfDay startTime, TimeOfDay endTime) {
   if(excludedCourses.contains(section.courseId)){
     return true;
