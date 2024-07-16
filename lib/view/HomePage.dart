@@ -123,6 +123,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor:Color(0xFF842700) ,
         currentIndex: 0,
         type: BottomNavigationBarType.fixed,
         items: [
