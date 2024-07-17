@@ -28,8 +28,11 @@ class LoginPage extends StatelessWidget {
             Column(
               children: [
                 const Image(
-                  image: AssetImage("assets/logoWithText.png"),
-                  height: 300,
+                  image: AssetImage("assets/logo.png"),
+                  height: 200,
+                ),
+                SizedBox(
+                  height: 25,
                 ),
                 RoundedTextField(
                   label: 'الايميل',

@@ -26,9 +26,10 @@ class SignUpPage extends StatelessWidget {
             Column(
               children: [
                 const Image(
-                  image: AssetImage("assets/logoWithText.png"),
-                  height: 250,
+                  image: AssetImage("assets/logo.png"),
+                  height: 200,
                 ),
+                const SizedBox(height: 25),
                 RoundedTextField(
                   label: 'الاسم الكامل',
                   width: 320,
