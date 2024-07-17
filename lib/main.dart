@@ -19,7 +19,7 @@ void main() async {
   runApp(
       MaterialApp(
         home: MyApp(),
-        theme: ThemeData(fontFamily: 'RobotoMono'),
+        theme: ThemeData(fontFamily: 'Cairo'),
         debugShowCheckedModeBanner: false,
       )
   );
