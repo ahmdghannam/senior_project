@@ -115,7 +115,7 @@ class _ChatPageState extends State<ChatPage> {
                   style: TextStyle(
                     fontSize: 16,
                     fontWeight: FontWeight.w400,
-                    color: Theme.of(context).primaryColor,
+                    color:Color(0xFF842700),
                   ),
                 ),
               ),
@@ -143,7 +143,7 @@ class _ChatPageState extends State<ChatPage> {
             messageInsetsHorizontal: 10,
             messageInsetsVertical: 8,
             messageBorderRadius: 14,
-            primaryColor: Theme.of(context).primaryColor,
+            primaryColor: Color(0xFF842700),
             secondaryColor: Colors.grey.shade200,
             receivedMessageBodyTextStyle: const TextStyle(
               color: Colors.black,
@@ -162,7 +162,7 @@ class _ChatPageState extends State<ChatPage> {
             inputBorderRadius: BorderRadius.zero,
             inputBackgroundColor: Colors.white,
             inputTextColor: Colors.black,
-            inputTextCursorColor: Theme.of(context).primaryColor,
+            inputTextCursorColor: Color(0xFF842700),
             inputPadding: const EdgeInsets.only(
               left: 10,
               right: 10,
@@ -211,7 +211,7 @@ class _ChatPageState extends State<ChatPage> {
             sendButtonIcon: Container(
               decoration: BoxDecoration(
                 borderRadius: const BorderRadius.all(Radius.circular(14)),
-                color: Theme.of(context).primaryColor,
+                color:Color(0xFF842700) ,
               ),
               padding: const EdgeInsets.all(2),
               child: Transform.rotate(
@@ -281,7 +281,7 @@ class _ChatPageState extends State<ChatPage> {
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 17,
-                color: Theme.of(context).primaryColor,
+                color: Color(0xFF842700),
               ),
             ),
           ),

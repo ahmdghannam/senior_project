@@ -50,7 +50,7 @@ class _ChatAppBarState extends State<ChatAppBar> {
                 Icon(
                   Icons.person,
                   size: 36,
-                  color: Theme.of(context).primaryColor,
+                  color: Color(0xFF842700),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +71,7 @@ class _ChatAppBarState extends State<ChatAppBar> {
                           child: Padding(
                             padding: const EdgeInsets.only(right: 4),
                             child: CupertinoActivityIndicator(
-                              color: Theme.of(context).primaryColor,
+                              color:Color(0xFF842700) ,
                               radius: 7,
                             ),
                           ),
@@ -79,7 +79,7 @@ class _ChatAppBarState extends State<ChatAppBar> {
                         Text(
                           widget.isTyping ? 'typing' : 'online',
                           style: TextStyle(
-                            color: Theme.of(context).primaryColor,
+                            color: Color(0xFF842700),
                             fontSize: 13.5,
                             fontWeight: FontWeight.w400,
                           ),
@@ -94,7 +94,7 @@ class _ChatAppBarState extends State<ChatAppBar> {
                   alignment: Alignment.centerRight,
                   icon: Icon(
                     Icons.delete_outline_outlined,
-                    color: Theme.of(context).primaryColor,
+                    color: Color(0xFF842700),
                   ),
                 ),
               ],
@@ -124,7 +124,7 @@ class _ChatAppBarState extends State<ChatAppBar> {
               style: TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 17,
-                color: Theme.of(context).primaryColor,
+                color: Color(0xFF842700),
               ),
             ),
           ),
