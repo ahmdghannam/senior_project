@@ -62,7 +62,7 @@ class MyApp extends StatelessWidget {
             print("is logged in $isLoggedI");
             print("the user id is $userId");
             return MaterialApp(
-              theme: ThemeData(fontFamily: 'RobotoMono'),
+              theme: ThemeData(fontFamily: 'Cairo'),
               home: isLoggedI == true && userId != null
                   ? HomePage(studentId: userId)
                   : LoginPage(),

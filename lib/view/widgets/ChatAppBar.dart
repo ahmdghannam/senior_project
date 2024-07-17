@@ -8,7 +8,6 @@ import 'package:flutter_course_project/view/ChatPage.dart';
 class ChatAppBar extends StatefulWidget implements PreferredSizeWidget {
   static const double _preferredHeight = 110;
   final bool isTyping;
-
   ChatAppBar({
     required this.isTyping,
     super.key,
@@ -56,7 +55,7 @@ class _ChatAppBarState extends State<ChatAppBar> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const Text(
-                      'Your AI assistant',
+                      'مُســاعد',
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: 16,

@@ -51,7 +51,7 @@ class LoginPage extends StatelessWidget {
                     backgroundColor: const Color(0xFF842700),
                     foregroundColor: Colors.white,
                   ),
-                  child: const Text('التسجيل'),
+                  child: const Text('تسجيل الدخول'),
                 ),
                 const SizedBox(height: 16),
                 Row(
