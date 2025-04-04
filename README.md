@@ -2,6 +2,8 @@
 
 **Mosaaed** is a mobile application designed to support university students by providing instant assistance through a chatbot and streamlining the course registration process with a schedule generator. This project was developed as a senior graduation project by [Musab Nuirat](https://github.com/Musab-Nuirat/), [Ahmed Ghannam](https://github.com/ahmdghannam/), and [Estabraq Abo Alrob.](https://github.com/EstabraqAbualrob)
 
+For more infromation please refer to the project documentation [file download](https://github.com/ahmdghannam/senior_project/blob/main/Graduation%20Project%20Paper%20Documentation.pdf)
+
 ## Features
 
 - **Chatbot with 93% Accuracy**: Utilizing BERT Embedding with similarity scoring, our chatbot provides quick and relevant answers to frequently asked questions, offering instant support to students.
