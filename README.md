@@ -1,4 +1,4 @@
-# Mosaaed: University Student Support App
+# Mosaaed: University Student Support App "Graduation Project"
 
 **Mosaaed** is a mobile application designed to support university students by providing instant assistance through a chatbot and streamlining the course registration process with a schedule generator. This project was developed as a senior graduation project by [Musab Nuirat](https://github.com/Musab-Nuirat/), [Ahmed Ghannam](https://github.com/ahmdghannam/), and [Estabraq Abo Alrob.](https://github.com/EstabraqAbualrob)
 
